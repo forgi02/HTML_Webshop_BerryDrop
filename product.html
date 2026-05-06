@@ -92,5 +92,10 @@
         </p>
       </section>
     </main>
+
+    <!-- Produktdaten werden zuerst geladen, damit app.js darauf zugreifen kann. -->
+    <script src="data.js" defer></script>
+    <!-- JavaScript lädt die Produktdaten passend zum URL-Parameter und füllt die Platzhalter der Seite. -->
+    <script src="app.js" defer></script>
   </body>
 </html>

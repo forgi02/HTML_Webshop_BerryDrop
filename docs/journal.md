@@ -47,12 +47,19 @@
 - `imprint.html` als erste Pflichtseite ergänzt.
 - Rohdaten nach `data/data_raw.md` verschoben und `docs/data.md` auf eine Datenübersicht umgestellt.
 
+### 2026-05-06
+**JavaScript-Grundlage für Produktseiten**
+- `docs/app-concept.md` als kurzes Konzept für die spätere App ergänzt.
+- `product.html` zur generischen Detailseite mit festen ID-Hooks für JavaScript vorbereitet.
+- `app.js` angelegt und mit `product.html` verbunden; die Produktdaten werden jetzt über `?product=...` geladen.
+- Die alte hardcodierte Produktseite entfernt, damit die Detailseiten künftig nur noch über die Template-Seite laufen.
+
 ---
 
 ## Offene Punkte (für nächste Phase)
 
 - Preisformat finalisieren (`69,00 EUR` vs. `€ 69,00`)?
-- Produktdaten: hardcoded oder zentrale JSON?
+- Produktdaten: zunächst in `app.js`, später bei Bedarf in eine separate Datenquelle auslagern.
 - Formspree-Test: Funktioniert von `file://` oder braucht HTTP-Server?
 - Produktbilder noch ergänzen.
 

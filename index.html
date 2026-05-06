@@ -38,82 +38,26 @@
         <h1 id="intro-heading">Handmade jewelry for the Garden Collection</h1>
         <!-- Kurzer Einführungstext, damit Besucher sofort verstehen, was angeboten wird. -->
         <p>
-          Explore three published pieces of handmade jewelry. Each product has its own detail page,
-          plus direct contact access.
+          Explore our handmade jewelry collection. The product list below is loaded dynamically from
+          the shared product data file.
         </p>
       </section>
 
-      <!-- Produktübersicht: hier erscheinen die drei veröffentlichten Produkte der Startseite. -->
+      <!-- Produktübersicht: diese Liste wird von JavaScript aus data.js generiert. -->
       <section aria-labelledby="products-heading">
         <!-- H2 strukturiert den Produktbereich als Unterabschnitt der Startseite. -->
         <h2 id="products-heading">Products</h2>
-        <!-- Die Produkte werden als Liste dargestellt, weil sie gleichrangige Einträge sind. -->
-        <ul>
-          <!-- Erstes Produkt: Halskette. Ein article markiert einen eigenständigen Inhalt. -->
-          <li>
-            <article>
-              <!-- figure verbindet Bild und Beschriftung zu einer gemeinsamen Einheit. -->
-              <figure>
-                <!-- Platzhalterbild direkt im HTML, damit für Schritt 1 keine zusätzliche Bilddatei nötig ist. -->
-                <img
-                  src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480' viewBox='0 0 640 480'%3E%3Crect width='640' height='480' fill='%23f3efe8'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%23666' font-family='Arial, sans-serif' font-size='28'%3ENecklace image%3C/text%3E%3C/svg%3E"
-                  alt="Raspberry Pearlette Necklace product image placeholder"
-                >
-                <!-- Produktname als Bildunterschrift; hier in Englisch und Deutsch, wie in den Vorgaben gefordert. -->
-                <figcaption>Raspberry Pearlette Necklace / Raspberry Pearlette Halskette</figcaption>
-              </figure>
-              <!-- Preis als einfacher Text; für Schritt 1 reicht eine sichtbare Textzeile. -->
-              <p>Price: €49,95 EUR</p>
-              <!-- Verfügbarkeitsstatus muss auf der Startseite sichtbar sein. -->
-              <p>Availability: In stock</p>
-              <!-- Link zur generischen Produktdetailseite; der Produktschlüssel wird als URL-Parameter übergeben, damit JavaScript weiß, welche Daten zu laden sind. -->
-              <p><a href="product.html?product=raspberry-pearlette-necklace">View details</a></p>
-            </article>
-          </li>
-          <!-- Zweites Produkt: Ohrringe, gleiche Struktur für Konsistenz und bessere Lesbarkeit. -->
-          <li>
-            <article>
-              <!-- Wieder Bild + Beschriftung als zusammengehörige Einheit. -->
-              <figure>
-                <!-- Zweiter Platzhalter im gleichen Stil, damit die Struktur sichtbar bleibt. -->
-                <img
-                  src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480' viewBox='0 0 640 480'%3E%3Crect width='640' height='480' fill='%23f3efe8'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%23666' font-family='Arial, sans-serif' font-size='28'%3EEarrings image%3C/text%3E%3C/svg%3E"
-                  alt="Raspberry Swirl Earrings product image placeholder"
-                >
-                <!-- Produktname in beiden Sprachen, damit die spätere Mehrsprachigkeit schon sichtbar ist. -->
-                <figcaption>Raspberry Swirl Earrings / Raspberry Swirl Ohrringe</figcaption>
-              </figure>
-              <!-- Preis des zweiten Produkts. -->
-              <p>Price: €39,95</p>
-              <!-- Auch hier wird der Lagerstatus direkt angezeigt. -->
-              <p>Availability: In stock</p>
-              <!-- Link zur generischen Produktdetailseite mit dem Produktschlüssel als Parameter. -->
-              <p><a href="product.html?product=raspberry-swirl-earrings">View details</a></p>
-            </article>
-          </li>
-          <!-- Drittes Produkt: Armband, wieder mit der gleichen semantischen Struktur. -->
-          <li>
-            <article>
-              <!-- Drittes Produktbild als Platzhalter. -->
-              <figure>
-                <!-- Der visuelle Stil der Platzhalter bleibt bewusst einheitlich. -->
-                <img
-                  src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480' viewBox='0 0 640 480'%3E%3Crect width='640' height='480' fill='%23f3efe8'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%23666' font-family='Arial, sans-serif' font-size='28'%3EBracelet image%3C/text%3E%3C/svg%3E"
-                  alt="Bijou Berry Bracelet product image placeholder"
-                >
-                <!-- Dritte Bildunterschrift mit deutschem und englischem Namen. -->
-                <figcaption>Bijou Berry Bracelet / Bijou Berry Armband</figcaption>
-              </figure>
-              <!-- Preis des Armbands. -->
-              <p>Price: €42,95 EUR</p>
-              <!-- Verfügbarkeit auch beim dritten Produkt klar sichtbar halten. -->
-              <p>Availability: In stock</p>
-              <!-- Detail-Link zum dritten Produkt über die generische Detailseite. -->
-              <p><a href="product.html?product=bijou-berry-bracelet">View details</a></p>
-            </article>
-          </li>
+        <!-- Leere Liste als Zielcontainer: JavaScript erzeugt pro Produkt einen <li>-Eintrag. -->
+        <ul id="product-list">
+          <!-- Fallback ohne JavaScript: einfache Hinweismeldung bleibt sichtbar, falls Skripte blockiert sind. -->
+          <li>Products are loading...</li>
         </ul>
       </section>
     </main>
+
+    <!-- Produktdaten zuerst laden, damit das Startseiten-Skript darauf zugreifen kann. -->
+    <script src="data.js" defer></script>
+    <!-- Startseiten-Skript erzeugt die Produktkarten dynamisch aus den Daten. -->
+    <script src="index.js" defer></script>
   </body>
 </html>
