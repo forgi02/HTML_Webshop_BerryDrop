@@ -2,16 +2,6 @@
 // Die Datei liest den Produkt-Slug aus der URL, sucht die passenden Daten in data.js
 // und schreibt sie in die vorgesehenen HTML-Elemente der Template-Seite.
 
-// Unified helper: sets text or list content depending on value type.
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
-}
-
 function setContent(id, value) {
   const el = document.getElementById(id);
   if (!el) return;
@@ -30,18 +20,10 @@ const productSlug = params.get("product");
 const requestedLang = params.get("lang");
 
 // Falls keine gueltige Sprache in der URL steht, wird die Standardsprache benutzt.
-const language = SUPPORTED_LANGS.includes(requestedLang) ? requestedLang : DEFAULT_LANG;
+const language = resolveLanguage(requestedLang);
 
 // Produktobjekt aus der gemeinsamen Datenquelle holen.
 const product = products[productSlug];
-
-// Kleiner Sprachhelfer: Wenn Deutsch aktiv ist und eine DE-Version existiert,
-// wird die deutsche Version ausgegeben. Sonst bleibt die englische Ausgabe erhalten.
-function getLocalizedValue(item, field) {
-  const localizedKey = `${field}DE`;
-  if (language === "de" && item[localizedKey]) return item[localizedKey];
-  return item[field];
-}
 
 // Fallback-Ansicht, wenn der product-Slug nicht existiert.
 // Damit bleibt die Seite auch bei Tippfehlern im Link nutzbar und erklaerbar.
@@ -86,7 +68,7 @@ if (!product) {
       "product-notes": "notes",
     };
   
-    Object.entries(mappings).forEach(([id, field]) => setContent(id, getLocalizedValue(product, field)));
+    Object.entries(mappings).forEach(([id, field]) => setContent(id, getLocalizedValue(product, field, language)));
 
   // Das Produktbild bekommt den passenden Alt-Text, damit die Seite barrierefrei bleibt.
   const image = document.getElementById("product-image");
@@ -99,5 +81,5 @@ if (!product) {
   }
 
   // Der Browser-Tab zeigt den aktuellen Produktnamen.
-  document.title = `${getLocalizedValue(product, "name")} | Jewelry Webshop`;
+  document.title = `${getLocalizedValue(product, "name", language)} | Jewelry Webshop`;
 }
