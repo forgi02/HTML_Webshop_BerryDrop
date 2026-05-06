@@ -7,33 +7,53 @@
 const params = new URLSearchParams(window.location.search);
 const requestedLang = params.get("lang");
 const language = SUPPORTED_LANGS.includes(requestedLang) ? requestedLang : DEFAULT_LANG;
+const isGerman = language === "de";
+
+const UI_LABELS = {
+  price: { en: "Price", de: "Preis" },
+  availability: { en: "Availability", de: "Verfuegbarkeit" },
+  details: { en: "View details", de: "Details ansehen" },
+};
 
 // Kleiner Sprachhelfer, damit EN und DE nicht in vielen if-Abfragen verteilt werden.
 function getLocalizedValue(item, field) {
   const localizedKey = `${field}DE`;
-  if (language === "de" && item[localizedKey]) return item[localizedKey];
+  if (isGerman && item[localizedKey]) return item[localizedKey];
   return item[field];
+}
+
+function getLabel(key) {
+  const labels = UI_LABELS[key];
+  if (!labels) return key;
+  return isGerman ? labels.de : labels.en;
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 // Baut eine komplette Produktkarte als HTML-String.
 // Das ist kuerzer als viele einzelne DOM-Aufrufe und passt fuer eine wiederholte Kartenstruktur.
 function createProductCardMarkup(slug, product) {
   const name = getLocalizedValue(product, "name");
-  const priceLabel = language === "de" ? "Preis" : "Price";
-  const availabilityLabel = language === "de" ? "Verfügbarkeit" : "Availability";
-  const detailsLabel = language === "de" ? "Details ansehen" : "View details";
+  const altText = product.imageAlt || `${name} product image placeholder`;
 
   return `
     <li>
       <article>
         <figure>
           <!-- Platzhalterbild fuer die Karten, bis echte Produktbilder vorhanden sind. -->
-          <img src="${CARD_IMAGE_PLACEHOLDER}" alt="${product.imageAlt || `${name} product image placeholder`}">
-          <figcaption>${name}</figcaption>
+          <img src="${CARD_IMAGE_PLACEHOLDER}" alt="${escapeHtml(altText)}">
+          <figcaption>${escapeHtml(name)}</figcaption>
         </figure>
-        <p>${priceLabel}: ${product.price}</p>
-        <p>${availabilityLabel}: ${getLocalizedValue(product, "availability")}</p>
-        <p><a href="product.html?product=${slug}&lang=${language}">${detailsLabel}</a></p>
+        <p>${getLabel("price")}: ${escapeHtml(product.price)}</p>
+        <p>${getLabel("availability")}: ${escapeHtml(getLocalizedValue(product, "availability"))}</p>
+        <p><a href="product.html?product=${slug}&lang=${language}">${getLabel("details")}</a></p>
       </article>
     </li>
   `;
