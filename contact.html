@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Zeichencodierung auf UTF-8 setzen, damit Sonderzeichen und das Euro-Zeichen sauber dargestellt werden. -->
+    <meta charset="utf-8">
+    <!-- Viewport für mobile Geräte, damit die Seite auf kleinen Bildschirmen korrekt skaliert. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Titel für den Browser-Tab; sofort erkennbar als Kontaktseite. -->
+    <title>Contact | Jewelry Webshop</title>
+    <!-- Kurze Beschreibung für Browser, Suchmaschinen und Vorschauen. -->
+    <meta name="description" content="Contact page for the jewelry webshop.">
+  </head>
+  <body>
+    <!-- Kopfbereich mit Markenname und Hauptnavigation, damit die Seite direkt Orientierung gibt. -->
+    <header>
+      <!-- Einfacher Platzhalter für den Shopnamen; später kann hier ein Logo stehen. -->
+      <p>Jewelry Webshop</p>
+      <!-- Hauptnavigation mit aria-label, damit Screenreader den Bereich eindeutig benennen können. -->
+      <nav aria-label="Primary navigation">
+        <!-- Navigation als Liste, weil sie aus gleichrangigen Zielen besteht. -->
+        <ul>
+          <!-- Startseite im vorläufigen MVP ohne Sprachparameter. -->
+          <li><a href="index.html">Shop</a></li>
+          <!-- Kontaktseite bleibt Teil der Hauptnavigation. -->
+          <li><a href="contact.html">Contact</a></li>
+          <!-- Englisches Impressum. -->
+          <li><a href="imprint.html">Imprint</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hauptinhalt der Seite; hier steht die eigentliche Kontaktfunktion. -->
+    <main>
+      <!-- Abschnitt für das Kontaktformular; aria-labelledby verknüpft ihn mit der Überschrift. -->
+      <section aria-labelledby="contact-heading">
+        <!-- H1 als Hauptüberschrift der Seite: klar und direkt. -->
+        <h1 id="contact-heading">Contact</h1>
+        <!-- Kurzer Hinweis, wann das Formular verwendet werden soll. -->
+        <p>Please use this form if you have questions about a product or the shop.</p>
+
+        <!-- Das Formular sendet an Formspree per POST, damit die Anfrage extern verarbeitet wird. -->
+        <form action="https://formspree.io/f/mvzvjwyg" method="post">
+          <!-- Verstecktes Feld für einen Produkt-Slug; bleibt leer, wenn die Anfrage nicht produktbezogen ist. -->
+          <input type="hidden" name="product_slug" value="">
+
+          <!-- Name-Feld: Pflichtangabe, damit die Anfrage zugeordnet werden kann. -->
+          <p>
+            <label for="name">Name</label><br>
+            <input type="text" id="name" name="name" required>
+          </p>
+
+          <!-- E-Mail-Feld: Pflichtangabe für die Antwort auf die Anfrage. -->
+          <p>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email" required>
+          </p>
+
+          <!-- Betreff-Feld: gibt der Anfrage eine kurze inhaltliche Einordnung. -->
+          <p>
+            <label for="subject">Subject</label><br>
+            <input type="text" id="subject" name="subject" required>
+          </p>
+
+          <!-- Nachrichtenfeld: hier steht der eigentliche Text der Anfrage. -->
+          <p>
+            <label for="message">Message</label><br>
+            <textarea id="message" name="message" rows="8" required></textarea>
+          </p>
+
+          <!-- Absenden-Button; ohne ihn könnte das Formular nicht ausgelöst werden. -->
+          <p>
+            <button type="submit">Send message</button>
+          </p>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

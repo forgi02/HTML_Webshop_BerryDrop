@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Zeichencodierung auf UTF-8 setzen, damit Sonderzeichen und das Euro-Zeichen sauber dargestellt werden. -->
+    <meta charset="utf-8">
+    <!-- Viewport für mobile Geräte, damit die Seite auf kleinen Bildschirmen korrekt skaliert. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Titel wird später von JavaScript dynamisch gesetzt. -->
+    <title>Product | Jewelry Webshop</title>
+    <!-- Beschreibung wird später von JavaScript dynamisch gesetzt. -->
+    <meta name="description" content="Product detail page for the Jewelry Webshop.">
+  </head>
+  <body>
+    <!-- Kopfbereich mit Markenname und Hauptnavigation, damit die Seite sofort Orientierung gibt. -->
+    <header>
+      <!-- Einfacher Platzhalter für den Shopnamen; später kann hier ein echtes Logo stehen. -->
+      <p>Jewelry Webshop</p>
+      <!-- Hauptnavigation mit aria-label, damit Screenreader den Bereich eindeutig benennen können. -->
+      <nav aria-label="Primary navigation">
+        <!-- Navigation als Liste, weil sie aus gleichrangigen Zielen besteht. -->
+        <ul>
+          <!-- Link zur Startseite für den zurückliegenden Einstieg in den Shop. -->
+          <li><a href="index.html">Shop</a></li>
+          <!-- Kontaktseite bleibt erreichbar, damit Produktfragen direkt gestellt werden können. -->
+          <li><a href="contact.html">Contact</a></li>
+          <!-- Englisches Impressum bleibt Teil der Hauptnavigation. -->
+          <li><a href="imprint.html">Imprint</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hauptinhalt der Seite; hier wird das konkrete Produkt mit allen Details dargestellt. -->
+    <main>
+      <!-- Produktabschnitt mit klarer Überschrift und verknüpfter Semantik. -->
+      <section aria-labelledby="product-heading">
+        <!-- H1 als Hauptüberschrift der Produktdetailseite, wird von JavaScript befüllt. -->
+        <h1 id="product-heading">Product</h1>
+
+        <!-- Produktbild und Beschriftung werden gemeinsam über figure dargestellt. -->
+        <figure>
+          <!-- Platzhalterbild, das später von JavaScript durch echtes Produktbild ersetzt wird. -->
+          <img
+            id="product-image"
+            src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='960' height='720' viewBox='0 0 960 720'%3E%3Crect width='960' height='720' fill='%23f3efe8'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%23666' font-family='Arial, sans-serif' font-size='32'%3EProduct Image%3C/text%3E%3C/svg%3E"
+            alt="Product image placeholder"
+          >
+          <!-- Bildunterschrift hält den Produktnamen auch unter dem Bild fest. -->
+          <figcaption id="product-name">Product Name</figcaption>
+        </figure>
+
+        <!-- Wichtige Produktdaten kompakt unter dem Bild, alle mit ID für JavaScript-Austausch. -->
+        <p><strong>Price:</strong> <span id="product-price">-</span></p>
+        <p><strong>Category:</strong> <span id="product-category">-</span></p>
+        <p><strong>Made in:</strong> <span id="product-made-in">-</span></p>
+        <p><strong>Shipping time:</strong> <span id="product-shipping">-</span></p>
+        <p><strong>Availability:</strong> <span id="product-availability">-</span></p>
+
+        <!-- Beschreibung gibt dem Produkt mehr Kontext, wird von JavaScript befüllt. -->
+        <section aria-labelledby="description-heading">
+          <h2 id="description-heading">Description</h2>
+          <p id="product-description">Product description will be loaded here.</p>
+        </section>
+
+        <!-- Materialangaben sind als Liste leichter scanbar. -->
+        <section aria-labelledby="materials-heading">
+          <h2 id="materials-heading">Materials</h2>
+          <ul id="product-materials">
+            <li>Material will be loaded here.</li>
+          </ul>
+        </section>
+
+        <!-- Maße sind als eigene Gruppe sinnvoll, weil sie für die Kaufentscheidung relevant sind. -->
+        <section aria-labelledby="measurements-heading">
+          <h2 id="measurements-heading">Measurements</h2>
+          <ul id="product-measurements">
+            <li>Measurements will be loaded here.</li>
+          </ul>
+        </section>
+
+        <!-- Hinweise bündeln Zusatzinformationen wie Herkunft und Versand. -->
+        <section aria-labelledby="notes-heading">
+          <h2 id="notes-heading">Notes</h2>
+          <ul id="product-notes">
+            <li>Notes will be loaded here.</li>
+          </ul>
+        </section>
+
+        <!-- Kontaktlink mit Produktbezug, die Product-ID wird von JavaScript gesetzt. -->
+        <p>
+          <a id="product-contact-link" href="contact.html">Ask about this product</a>
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

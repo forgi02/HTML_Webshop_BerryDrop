@@ -1,0 +1,295 @@
+:root {
+  /* Zentrale Farb- und Layoutvariablen, damit das Design an einer Stelle gepflegt werden kann. */
+  color-scheme: light;
+  --bg: #fdfbf7;
+  --surface: #fffdf9;
+  --surface-muted: #f4eee3;
+  --text: #22201d;
+  --muted: #6b6258;
+  --accent: #8a5b3c;
+  --border: #e7ded0;
+  --shadow: 0 12px 32px rgba(34, 32, 29, 0.08);
+  --radius: 1rem;
+}
+
+* {
+  /* Einheitliches Box-Modell verhindert unerwartete Breiten- und Abstandseffekte. */
+  box-sizing: border-box;
+}
+
+html {
+  /* Weicher Hintergrundverlauf, damit die Seite nicht flach wirkt und zur Schmuck-Optik passt. */
+  background: radial-gradient(circle at top, #fff 0%, var(--bg) 45%, #f7f1e8 100%);
+}
+
+body {
+  /* Grundlegende Seitentypografie und Standardabstände für einen ruhigen Lesefluss. */
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+img {
+  /* Bilder sollen sich sauber an ihren Container anpassen und keine Lücken erzeugen. */
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  /* Links bekommen die Akzentfarbe und eine gut sichtbare Unterstreichung. */
+  color: var(--accent);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+a:hover,
+a:focus-visible {
+  /* Leichte Verdunkelung signalisiert Hover und Fokus ohne harte Kontraste. */
+  color: #6e452c;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  /* Sichtbarer Fokus ist wichtig für Tastaturbedienung und Barrierefreiheit. */
+  outline: 3px solid rgba(138, 91, 60, 0.35);
+  outline-offset: 3px;
+}
+
+header,
+main {
+  /* Der Inhalt bleibt auf eine angenehme Lesebreite begrenzt. */
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+header {
+  /* Header als flexible Leiste, damit Logo und Navigation nebeneinander oder untereinander passen. */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.5rem 0 1rem;
+}
+
+header p {
+  /* Der Shopname wird als starke, aber schlichte Wortmarke behandelt. */
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+nav ul {
+  /* Navigationslinks werden als horizontale, umbrechbare Liste dargestellt. */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  /* Navigation wie kleine Chips, damit die wichtigsten Seiten sofort erkennbar sind. */
+  display: inline-block;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 253, 249, 0.8);
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  /* Etwas hellerer Hintergrund als Feedback für Interaktion. */
+  background: #fff;
+}
+
+main {
+  /* Zusätzlicher Abstand unter dem Header, damit der Inhalt nicht gequetscht wirkt. */
+  padding: 1rem 0 3rem;
+}
+
+section {
+  /* Jede Inhaltsgruppe bekommt eine eigene Karte für klare visuelle Trennung. */
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(255, 253, 249, 0.8);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1,
+h2 {
+  /* Überschriften ohne oberen Abstand, damit die Karten kompakt wirken. */
+  margin-top: 0;
+  line-height: 1.15;
+}
+
+h1 {
+  /* Hauptüberschrift deutlich größer für klare Hierarchie auf der Seite. */
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin-bottom: 0.75rem;
+}
+
+h2 {
+  /* Sekundäre Überschrift etwas kleiner als H1, aber immer noch präsent. */
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+  margin-bottom: 1rem;
+}
+
+section > p:first-of-type {
+  /* Einleitungstext begrenzen, damit die Zeilenlänge angenehm lesbar bleibt. */
+  max-width: 65ch;
+  color: var(--muted);
+}
+
+ul {
+  /* Standard-Listenabstände für Inhalte, die nicht speziell umgestaltet werden. */
+  padding-left: 1.2rem;
+}
+
+section ul {
+  /* Produktlisten sollen ohne Standard-Aufzählungszeichen als Layout-Raster funktionieren. */
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+section li + li {
+  /* Vertikaler Abstand zwischen Produkten auf kleinen Screens. */
+  margin-top: 1rem;
+}
+
+article {
+  /* Produktkarte mit eigener Fläche, damit jedes Produkt als Einheit wahrgenommen wird. */
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+}
+
+figure {
+  /* Bild und Bildunterschrift sollen eng zusammengehören. */
+  margin: 0 0 0.85rem;
+}
+
+figcaption {
+  /* Produktname als starke Beschriftung unter dem Bild. */
+  margin-top: 0.75rem;
+  font-weight: 700;
+}
+
+article p {
+  /* Kleine Textabstände in der Produktkarte, damit Preis und Status sauber lesbar bleiben. */
+  margin: 0.45rem 0;
+}
+
+article img {
+  /* Bildrahmen und Hintergrund geben den Platzhaltern mehr visuelle Präsenz. */
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  background: var(--surface-muted);
+}
+
+form {
+  /* Formularfelder untereinander in einem klaren Raster. */
+  display: grid;
+  gap: 1rem;
+  max-width: 38rem;
+}
+
+form p {
+  /* Entfernt unnötige Standardabstände zwischen den einzelnen Formulargruppen. */
+  margin: 0;
+}
+
+label {
+  /* Labels deutlich lesbar machen, damit die Felder direkt verständlich sind. */
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  font-weight: 700;
+}
+
+input,
+textarea,
+button {
+  /* Einheitliche Schrift für Eingaben und Button, damit alles zusammengehört. */
+  font: inherit;
+}
+
+input,
+textarea {
+  /* Helle, klar gerahmte Felder, die sich gut vom Hintergrund abheben. */
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: #fff;
+  color: var(--text);
+}
+
+textarea {
+  /* Nachrichtenfeld bekommt mehr Höhe und bleibt manuell vergrößerbar. */
+  resize: vertical;
+  min-height: 12rem;
+}
+
+button {
+  /* Primärer Call-to-Action als deutlicher, warmer Button. */
+  padding: 0.85rem 1.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+button:hover {
+  /* Button wird beim Hover etwas dunkler, damit Interaktion sichtbar wird. */
+  background: #744a31;
+}
+
+@media (min-width: 720px) {
+  /* Ab einer breiteren Ansicht werden die Produkte nebeneinander als 3-Spalten-Grid gezeigt. */
+  section ul {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  section li + li {
+    margin-top: 0;
+  }
+
+  article {
+    height: 100%;
+  }
+}
+
+@media (max-width: 719px) {
+  /* Auf kleinen Bildschirmen wird der Header etwas kompakter gehalten. */
+  header {
+    padding-top: 1rem;
+  }
+
+  nav ul {
+    /* Links rücken dichter zusammen, damit die Navigation auf Mobile nicht zu viel Platz braucht. */
+    gap: 0.5rem;
+  }
+
+  nav a {
+    /* Kleinere Paddings auf Mobile machen die Navigation kompakter. */
+    padding: 0.4rem 0.7rem;
+  }
+}

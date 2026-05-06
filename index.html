@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <!-- Viewport für mobile Geräte: Die Seite soll auf kleinen Bildschirmen nicht herausgezoomt wirken. -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Seitentitel für den Browser-Tab; hier noch allgemein, weil das das Startseiten-Gerüst ist. -->
     <title>Jewelry Webshop</title>
     <!-- Kurze Beschreibung für Browser, Suchmaschinen und Vorschauen. -->
@@ -19,16 +20,12 @@
       <nav aria-label="Primary navigation">
         <!-- Liste, weil Navigation inhaltlich eine Reihe von Zielen ist. -->
         <ul>
-          <!-- Shop-Link zur Startseite mit Sprachparameter, damit die spätere Sprachlogik konsistent bleibt. -->
-          <li><a href="index.html?lang=en">Shop</a></li>
-          <!-- Kontaktseite ist schon verlinkt, obwohl die Seite erst später gebaut wird. -->
-          <li><a href="contact.html?lang=en">Contact</a></li>
-          <!-- Impressum/Imprint gehört laut Anforderungen direkt in die Hauptnavigation. -->
-          <li><a href="imprint.html?lang=en">Imprint</a></li>
-          <!-- Sprachwechsel nach Deutsch über URL-Parameter; so ist die Mechanik bereits vorbereitet. -->
-          <li><a href="index.html?lang=de">DE</a></li>
-          <!-- Sprachwechsel nach Englisch; die Startseite bleibt damit in beiden Sprachen erreichbar. -->
-          <li><a href="index.html?lang=en">EN</a></li>
+          <!-- Startseite bleibt im MVP auf Englisch und ohne Sprachparameter. -->
+          <li><a href="index.html">Shop</a></li>
+          <!-- Kontaktseite ist schon verlinkt, weil sie zum Grundumfang gehört. -->
+          <li><a href="contact.html">Contact</a></li>
+          <!-- Pflichtseite für das englische Impressum. -->
+          <li><a href="imprint.html">Imprint</a></li>
         </ul>
       </nav>
     </header>
@@ -42,7 +39,7 @@
         <!-- Kurzer Einführungstext, damit Besucher sofort verstehen, was angeboten wird. -->
         <p>
           Explore three published pieces of handmade jewelry. Each product has its own detail page,
-          plus bilingual navigation and contact access.
+          plus direct contact access.
         </p>
       </section>
 
@@ -69,8 +66,8 @@
               <p>Price: €49,95 EUR</p>
               <!-- Verfügbarkeitsstatus muss auf der Startseite sichtbar sein. -->
               <p>Availability: In stock</p>
-              <!-- Link zur späteren Produktdetailseite; der Sprachparameter ist schon mitgedacht. -->
-              <p><a href="product-raspberry-pearlette-necklace.html?lang=en">View details</a></p>
+              <!-- Link zur generischen Produktdetailseite; der Produktschlüssel wird als URL-Parameter übergeben, damit JavaScript weiß, welche Daten zu laden sind. -->
+              <p><a href="product.html?product=raspberry-pearlette-necklace">View details</a></p>
             </article>
           </li>
           <!-- Zweites Produkt: Ohrringe, gleiche Struktur für Konsistenz und bessere Lesbarkeit. -->
@@ -90,8 +87,8 @@
               <p>Price: €39,95</p>
               <!-- Auch hier wird der Lagerstatus direkt angezeigt. -->
               <p>Availability: In stock</p>
-              <!-- Link zur Detailseite des zweiten Produkts. -->
-              <p><a href="product-raspberry-swirl-earrings.html?lang=en">View details</a></p>
+              <!-- Link zur generischen Produktdetailseite mit dem Produktschlüssel als Parameter. -->
+              <p><a href="product.html?product=raspberry-swirl-earrings">View details</a></p>
             </article>
           </li>
           <!-- Drittes Produkt: Armband, wieder mit der gleichen semantischen Struktur. -->
@@ -111,8 +108,8 @@
               <p>Price: €42,95 EUR</p>
               <!-- Verfügbarkeit auch beim dritten Produkt klar sichtbar halten. -->
               <p>Availability: In stock</p>
-              <!-- Detail-Link zum dritten Produkt. -->
-              <p><a href="product-bijou-berry-bracelet.html?lang=en">View details</a></p>
+              <!-- Detail-Link zum dritten Produkt über die generische Detailseite. -->
+              <p><a href="product.html?product=bijou-berry-bracelet">View details</a></p>
             </article>
           </li>
         </ul>

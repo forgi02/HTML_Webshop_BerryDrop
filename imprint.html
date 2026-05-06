@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <!-- Viewport für mobile Geräte; sorgt dafür, dass die Seite auf kleinen Bildschirmen korrekt skaliert. -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Titel für den Browser-Tab, damit diese Pflichtseite direkt erkennbar ist. -->
     <title>Imprint | Jewelry Webshop</title>
     <!-- Kurze Beschreibung für Browser, Suchmaschinen und Vorschauen. -->
@@ -19,16 +20,12 @@
       <nav aria-label="Primary navigation">
         <!-- Liste, weil die Navigation aus gleichrangigen Zielen besteht. -->
         <ul>
-          <!-- Startseite mit Sprachparameter; die Navigation bleibt damit konsistent zum restlichen Projekt. -->
-          <li><a href="index.html?lang=en">Shop</a></li>
-          <!-- Kontaktseite ist schon verlinkt, weil sie zur Grundstruktur des Shops gehört. -->
-          <li><a href="contact.html?lang=en">Contact</a></li>
-          <!-- Imprint-Link zeigt auf die aktuelle Seite; das ist die Pflichtseite für öffentliche Seiten. -->
-          <li><a href="imprint.html?lang=en">Imprint</a></li>
-          <!-- Sprachwechsel auf Deutsch über URL-Parameter, auch wenn die deutsche Seite später separat kommt. -->
-          <li><a href="index.html?lang=de">DE</a></li>
-          <!-- Sprachwechsel auf Englisch, damit die Startseite in beiden Sprachvarianten erreichbar bleibt. -->
-          <li><a href="index.html?lang=en">EN</a></li>
+          <!-- Startseite im MVP ohne Sprachparameter. -->
+          <li><a href="index.html">Shop</a></li>
+          <!-- Kontaktseite bleibt erreichbar. -->
+          <li><a href="contact.html">Contact</a></li>
+          <!-- Diese Seite bleibt als englische Pflichtseite bestehen. -->
+          <li><a href="imprint.html">Imprint</a></li>
         </ul>
       </nav>
     </header>
