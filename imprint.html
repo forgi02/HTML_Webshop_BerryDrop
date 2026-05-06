@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Zeichencodierung auf UTF-8 setzen, damit Sonderzeichen und das Euro-Zeichen sauber dargestellt werden. -->
+    <meta charset="utf-8">
+    <!-- Viewport für mobile Geräte; sorgt dafür, dass die Seite auf kleinen Bildschirmen korrekt skaliert. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Titel für den Browser-Tab, damit diese Pflichtseite direkt erkennbar ist. -->
+    <title>Imprint | Jewelry Webshop</title>
+    <!-- Kurze Beschreibung für Browser, Suchmaschinen und Vorschauen. -->
+    <meta name="description" content="Imprint page for the jewelry webshop.">
+  </head>
+  <body>
+    <!-- Kopfbereich mit Markenname und Hauptnavigation, damit die Seite sofort orientierbar ist. -->
+    <header>
+      <!-- Platzhalter für den Shopnamen; später kann hier ein echtes Logo stehen. -->
+      <p>Jewelry Webshop</p>
+      <!-- Hauptnavigation mit aria-label, damit Screenreader den Bereich eindeutig benennen können. -->
+      <nav aria-label="Primary navigation">
+        <!-- Liste, weil die Navigation aus gleichrangigen Zielen besteht. -->
+        <ul>
+          <!-- Startseite mit Sprachparameter; die Navigation bleibt damit konsistent zum restlichen Projekt. -->
+          <li><a href="index.html?lang=en">Shop</a></li>
+          <!-- Kontaktseite ist schon verlinkt, weil sie zur Grundstruktur des Shops gehört. -->
+          <li><a href="contact.html?lang=en">Contact</a></li>
+          <!-- Imprint-Link zeigt auf die aktuelle Seite; das ist die Pflichtseite für öffentliche Seiten. -->
+          <li><a href="imprint.html?lang=en">Imprint</a></li>
+          <!-- Sprachwechsel auf Deutsch über URL-Parameter, auch wenn die deutsche Seite später separat kommt. -->
+          <li><a href="index.html?lang=de">DE</a></li>
+          <!-- Sprachwechsel auf Englisch, damit die Startseite in beiden Sprachvarianten erreichbar bleibt. -->
+          <li><a href="index.html?lang=en">EN</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hauptinhalt: hier steht ausschließlich der eigentliche Seiteninhalt. -->
+    <main>
+      <!-- Ein einzelner Inhaltsabschnitt für das Imprint, klar benannt über aria-labelledby. -->
+      <section aria-labelledby="imprint-heading">
+        <!-- H1 als Hauptüberschrift der Seite; hier reicht ein kurzer, klarer Titel. -->
+        <h1 id="imprint-heading">Imprint</h1>
+        <!-- Platzhaltertext, weil die rechtlichen Details erst später ergänzt werden. -->
+        <p>
+          Placeholder text for the English imprint page. Final legal details will be added here later.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

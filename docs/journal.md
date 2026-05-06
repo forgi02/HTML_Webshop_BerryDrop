@@ -41,6 +41,12 @@
 - Die gelieferten Produkttexte für Raspberry Pearlette Necklace, Raspberry Swirl Earrings und Bijou Berry Bracelet wurden in `data.md` übernommen.
 - Bilder fehlen noch; deshalb bleibt `data.md` an der Stelle bewusst als Materialsammlung mit Platzhaltern offen.
 
+### 2026-05-06
+**Seitenaufbau und Doku-Umstellung**
+- `index.html` als kommentiertes HTML-Gerüst aufgebaut.
+- `imprint.html` als erste Pflichtseite ergänzt.
+- Rohdaten nach `data/data_raw.md` verschoben und `docs/data.md` auf eine Datenübersicht umgestellt.
+
 ---
 
 ## Offene Punkte (für nächste Phase)
