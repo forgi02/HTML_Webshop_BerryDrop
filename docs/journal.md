@@ -54,6 +54,13 @@
 - `app.js` angelegt und mit `product.html` verbunden; die Produktdaten werden jetzt über `?product=...` geladen.
 - Die alte hardcodierte Produktseite entfernt, damit die Detailseiten künftig nur noch über die Template-Seite laufen.
 
+### 2026-05-06
+**JavaScript-Tutorial und Refactor**
+- Alle JavaScript-Dateien mit Tutorial-Kommentaren erweitert, damit die Logik in der Präsentation Zeile für Zeile erklaert werden kann.
+- `app.js` und `index.js` weiter vereinfacht: Sprachlogik, Textmapping und Karten-Rendering wurden kompakter aufgebaut.
+- `constants.js` als gemeinsame Sammelstelle fuer Standardwerte beibehalten und dokumentiert.
+- `data.js` um klare Kommentarstruktur fuer den bilingualen Produktdatensatz ergaenzt.
+
 ---
 
 ## Offene Punkte (für nächste Phase)

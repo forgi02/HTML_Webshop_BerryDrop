@@ -1,23 +1,36 @@
-// Produktdaten für die drei Artikel der Garden Collection.
-// Diese Datei enthält nur Daten, keine Logik. So können neue Produkte einfach hier hinzugefügt werden.
+// data.js enthaelt nur Produktdaten.
+// Das ist bewusst keine Logik-Datei: app.js und index.js lesen diese Daten nur aus und stellen sie dar.
+// Wenn spaeter ein neues Produkt dazukommt, wird hier einfach ein neues Objekt ergaenzt.
+
+// Das Objekt products ist wie eine kleine Datenbank im JavaScript-Format.
+// Der Schluessel ist der Produkt-Slug, der auch in der URL verwendet wird.
 const products = {
   "raspberry-pearlette-necklace": {
+    // Englischer und deutscher Name des Produkts.
     name: "Raspberry Pearlette Necklace",
     nameDE: "Raspberry Pearlette Halskette",
+    // Alt-Text fuer das Bild, falls spaeter ein echtes Produktbild eingebunden wird.
     imageAlt: "Raspberry Pearlette Necklace product image",
+    // Preis bleibt nur einmal gespeichert, weil er sprachunabhaengig ist.
     price: "€49,95",
+    // Kategorie in beiden Sprachen.
     category: "Necklace",
     categoryDE: "Halskette",
+    // Herkunft des Produkts in EN und DE.
     madeIn: "Austria",
     madeInDE: "Österreich",
+    // Versandzeit in EN und DE.
     shipping: "3-5 business days",
     shippingDE: "3-5 Werktage",
+    // Lagerstatus in EN und DE.
     availability: "In stock",
     availabilityDE: "Verfügbar",
+    // Lange Produktbeschreibung in beiden Sprachen.
     description:
       "Inspired by the swirling colors of a spring meadow, our Raspberry Pearlette Necklace is at the center of our Garden Collection set. This piece features colorful pearls and iridescent glass star beads for a luminescent and ethereal look.",
     descriptionDE:
       "Inspiriert von der lebendigen Farbenpracht einer Frühlingswiese, ist unsere Raspberry Pearlette Halskette das Herzstück unseres Garden Collection Sets. Dieses Schmuckstück besticht durch farbenfrohe Perlen und irisierende Glassternperlen, die für einen leuchtenden und ätherischen Look sorgen.",
+    // Listen fuer Materialien.
     materials: [
       "18K Gold dipped stainless steel and brass",
       "AAA grade genuine pearl (white)",
@@ -30,12 +43,15 @@ const products = {
       "Muschelkernperlen (Rosa, Lavendel, Blau)",
       "Zirkonia, tschechisches Kristall, tschechisches Glas, Lampwork-Glasperle",
     ],
+    // Maßangaben, hier jeweils als Listen, damit app.js sie einheitlich einlesen kann.
     measurements: ["35-40 cm including extension chain"],
     measurementsDE: ["35-40 cm (inklusive Verlängerungskettchen)"],
+    // Hinweise und Lieferinformationen.
     notes: ["Handmade in Austria", "Ships in 3-5 business days"],
     notesDE: ["Handgefertigt in Österreich", "Versandfertig in 3-5 Werktagen"],
   },
   "raspberry-swirl-earrings": {
+    // Zweites Produkt: Ohrringe mit gleichem Datenaufbau.
     name: "Raspberry Swirl Earrings",
     nameDE: "Raspberry Swirl Ohrringe",
     imageAlt: "Raspberry Swirl Earrings product image",
@@ -60,6 +76,7 @@ const products = {
     notesDE: ["Handgefertigt in Österreich", "Versandfertig in 3-5 Werktagen"],
   },
   "bijou-berry-bracelet": {
+    // Drittes Produkt: Armband.
     name: "Bijou Berry Bracelet",
     nameDE: "Bijou Berry Armband",
     imageAlt: "Bijou Berry Bracelet product image",

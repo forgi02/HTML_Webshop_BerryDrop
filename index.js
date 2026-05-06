@@ -1,59 +1,57 @@
-// Einheitlicher Platzhalter fuer die Startseite, bis echte Produktbilder vorhanden sind.
-const CARD_IMAGE =
-  "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480' viewBox='0 0 640 480'%3E%3Crect width='640' height='480' fill='%23f3efe8'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dominant-baseline='middle' fill='%23666' font-family='Arial, sans-serif' font-size='28'%3EProduct image%3C/text%3E%3C/svg%3E";
+// index.js rendert die Startseite dynamisch aus den Daten in data.js.
+// Statt drei fest verdrahteter Produktkarten erzeugt die Datei die Karten fuer alle Eintraege,
+// die in products vorhanden sind.
 
-function createProductCard(slug, product) {
-  const listItem = document.createElement("li");
-  const article = document.createElement("article");
-  const figure = document.createElement("figure");
-  const image = document.createElement("img");
-  const caption = document.createElement("figcaption");
-  const price = document.createElement("p");
-  const availability = document.createElement("p");
-  const detailsWrap = document.createElement("p");
-  const detailsLink = document.createElement("a");
+// Sprachparameter fuer die Startseite auslesen.
+// Bei gueltigem lang=de erscheinen deutsche Labels und Produktnamen.
+const params = new URLSearchParams(window.location.search);
+const requestedLang = params.get("lang");
+const language = SUPPORTED_LANGS.includes(requestedLang) ? requestedLang : DEFAULT_LANG;
 
-  image.src = CARD_IMAGE;
-  image.alt = product.imageAlt || `${product.name} product image placeholder`;
-
-  caption.textContent = product.nameDE
-    ? `${product.name} / ${product.nameDE}`
-    : product.name;
-
-  price.textContent = `Price: ${product.price}`;
-  availability.textContent = `Availability: ${product.availability}`;
-
-  detailsLink.href = `product.html?product=${slug}`;
-  detailsLink.textContent = "View details";
-  detailsWrap.appendChild(detailsLink);
-
-  figure.appendChild(image);
-  figure.appendChild(caption);
-
-  article.appendChild(figure);
-  article.appendChild(price);
-  article.appendChild(availability);
-  article.appendChild(detailsWrap);
-
-  listItem.appendChild(article);
-  return listItem;
+// Kleiner Sprachhelfer, damit EN und DE nicht in vielen if-Abfragen verteilt werden.
+function getLocalizedValue(item, field) {
+  const localizedKey = `${field}DE`;
+  if (language === "de" && item[localizedKey]) return item[localizedKey];
+  return item[field];
 }
 
+// Baut eine komplette Produktkarte als HTML-String.
+// Das ist kuerzer als viele einzelne DOM-Aufrufe und passt fuer eine wiederholte Kartenstruktur.
+function createProductCardMarkup(slug, product) {
+  const name = getLocalizedValue(product, "name");
+  const priceLabel = language === "de" ? "Preis" : "Price";
+  const availabilityLabel = language === "de" ? "Verfügbarkeit" : "Availability";
+  const detailsLabel = language === "de" ? "Details ansehen" : "View details";
+
+  return `
+    <li>
+      <article>
+        <figure>
+          <!-- Platzhalterbild fuer die Karten, bis echte Produktbilder vorhanden sind. -->
+          <img src="${CARD_IMAGE_PLACEHOLDER}" alt="${product.imageAlt || `${name} product image placeholder`}">
+          <figcaption>${name}</figcaption>
+        </figure>
+        <p>${priceLabel}: ${product.price}</p>
+        <p>${availabilityLabel}: ${getLocalizedValue(product, "availability")}</p>
+        <p><a href="product.html?product=${slug}&lang=${language}">${detailsLabel}</a></p>
+      </article>
+    </li>
+  `;
+}
+
+// Holt den Listencontainer und ersetzt seinen Inhalt durch alle Produktkarten.
 function renderProducts() {
   const productList = document.getElementById("product-list");
   if (!productList || typeof products !== "object") return;
 
-  productList.innerHTML = "";
+  // Object.entries liefert [slug, produktobjekt] Paare, die direkt gerendert werden koennen.
+  const cardsMarkup = Object.entries(products)
+    .map(([slug, product]) => createProductCardMarkup(slug, product))
+    .join("");
 
-  Object.entries(products).forEach(([slug, product]) => {
-    productList.appendChild(createProductCard(slug, product));
-  });
-
-  if (productList.children.length === 0) {
-    const emptyState = document.createElement("li");
-    emptyState.textContent = "No products found in data.js.";
-    productList.appendChild(emptyState);
-  }
+  // Wenn keine Produkte vorhanden sind, bleibt eine klare Meldung sichtbar.
+  productList.innerHTML = cardsMarkup || "<li>No products found in data.js.</li>";
 }
 
+// Direkt ausfuehren, sobald die Datei geladen ist.
 renderProducts();
