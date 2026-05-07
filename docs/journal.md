@@ -75,6 +75,14 @@
 - Smoke-Tests durchgefuehrt fuer `index.html`, `index.html?lang=de` und `product.html?product=raspberry-swirl-earrings&lang=de`.
 - Commits und Pushes ausgefuehrt: `Weitere Vereinfacherungen in index.js` sowie `Gemeinsame JS-Helper fuer app und index ausgelagert`.
 
+### 2026-05-07
+**Konfigurationen vereinigt**
+- `config.js` erstellt und kombiniert `constants.js` (Konstanten) + `shared-utils.js` (Hilfsfunktionen).
+- `constants.js` und `shared-utils.js` geloescht; `index.html` und `product.html` angepasst.
+- Jetzt nur noch 4 JS-Dateien noetig: `config.js`, `data.js`, `app.js`, `index.js`.
+- Tests durchgefuehrt: `index.html` (EN) und `product.html?product=bijou-berry-bracelet&lang=de` funktionieren.
+- Commit und Push: `Vereinigte Konfiguration: config.js ersetzt constants.js und shared-utils.js`.
+
 ---
 
 ## Offene Punkte (für nächste Phase)
