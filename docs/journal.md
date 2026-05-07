@@ -83,6 +83,14 @@
 - Tests durchgefuehrt: `index.html` (EN) und `product.html?product=bijou-berry-bracelet&lang=de` funktionieren.
 - Commit und Push: `Vereinigte Konfiguration: config.js ersetzt constants.js und shared-utils.js`.
 
+### 2026-05-07
+**JS-Dateien in js/ Ordner organisiert**
+- Alle 4 JS-Dateien in einen neuen `js/` Ordner verschoben: `config.js`, `data.js`, `app.js`, `index.js`.
+- `index.html` und `product.html` um neue Script-Pfade (`js/config.js`, `js/data.js`, etc.) angepasst.
+- Alte JS-Dateien im Root-Verzeichnis geloescht.
+- Tests durchgefuehrt: `index.html` und `product.html?product=raspberry-pearlette-necklace&lang=de` funktionieren.
+- Projektstruktur ist jetzt sauberer: HTML/CSS im Root, JS im js/-Ordner.
+
 ---
 
 ## Offene Punkte (für nächste Phase)
