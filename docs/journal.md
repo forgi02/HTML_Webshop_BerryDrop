@@ -61,6 +61,20 @@
 - `constants.js` als gemeinsame Sammelstelle fuer Standardwerte beibehalten und dokumentiert.
 - `data.js` um klare Kommentarstruktur fuer den bilingualen Produktdatensatz ergaenzt.
 
+### 2026-05-06
+**Weitere JavaScript-Vereinfachungen und Validierung**
+- `app.js` auf einen einheitlichen Content-Helper umgestellt (`setContent` fuer Text und Listen).
+- Fallback-Rendering fuer ungültige Produkt-Slugs auf denselben Helper umgestellt.
+- Produktseiten getestet: gueltiger Slug und ungültiger Slug liefern die erwarteten Inhalte.
+- Commit und Push ausgefuehrt: `Vereinfacherungen des JavaScripts`.
+
+### 2026-05-06
+**Gemeinsame Helper ausgelagert**
+- Duplizierte Funktionen aus `app.js` und `index.js` in `shared-utils.js` verschoben (`resolveLanguage`, `getLocalizedValue`, `escapeHtml`).
+- `index.html` und `product.html` um die Einbindung von `shared-utils.js` erweitert.
+- Smoke-Tests durchgefuehrt fuer `index.html`, `index.html?lang=de` und `product.html?product=raspberry-swirl-earrings&lang=de`.
+- Commits und Pushes ausgefuehrt: `Weitere Vereinfacherungen in index.js` sowie `Gemeinsame JS-Helper fuer app und index ausgelagert`.
+
 ---
 
 ## Offene Punkte (für nächste Phase)
