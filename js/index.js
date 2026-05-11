@@ -11,7 +11,7 @@ const isGerman = language === "de";
 
 const UI_LABELS = {
   price: { en: "Price", de: "Preis" },
-  availability: { en: "Availability", de: "Verfuegbarkeit" },
+  availability: { en: "Availability", de: "Verfügbarkeit" },
   details: { en: "View details", de: "Details ansehen" },
 };
 
