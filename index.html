@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
     <!-- Seitentitel für den Browser-Tab; hier noch allgemein, weil das das Startseiten-Gerüst ist. -->
-    <title>Jewelry Webshop</title>
+    <title>Berry-Drop-Shop</title>
     <!-- Kurze Beschreibung für Browser, Suchmaschinen und Vorschauen. -->
     <meta name="description" content="A static jewelry webshop for handmade pieces.">
   </head>
@@ -15,17 +15,19 @@
     <!-- Der Header enthält die obere Orientierung der Seite: Markenname und Hauptnavigation. -->
     <header>
       <!-- Einfacher Platzhalter für den Shopnamen; später kann hier ein echtes Logo stehen. -->
-      <p>Jewelry Webshop</p>
+      <p>Berry-Drop-Shop</p>
       <!-- Hauptnavigation; aria-label macht den Zweck für Screenreader eindeutig. -->
       <nav aria-label="Primary navigation">
         <!-- Liste, weil Navigation inhaltlich eine Reihe von Zielen ist. -->
         <ul>
           <!-- Startseite bleibt im MVP auf Englisch und ohne Sprachparameter. -->
-          <li><a href="index.html">Shop</a></li>
+          <li><a href="index.html" data-i18n-en="Shop" data-i18n-de="Shop">Shop</a></li>
           <!-- Kontaktseite ist schon verlinkt, weil sie zum Grundumfang gehört. -->
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" data-i18n-en="Contact" data-i18n-de="Kontakt">Contact</a></li>
           <!-- Pflichtseite für das englische Impressum. -->
-          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="imprint.html" data-i18n-en="Imprint" data-i18n-de="Impressum">Imprint</a></li>
+          <!-- Sprachumschalter, der auf die jeweilige Gegensprache springt. -->
+          <li><a id="language-toggle" href="">Deutsch</a></li>
         </ul>
       </nav>
     </header>
@@ -35,18 +37,17 @@
       <!-- Einleitungsbereich: erklärt kurz, worum es auf der Seite geht. -->
       <section aria-labelledby="intro-heading">
         <!-- H1 ist die wichtigste Überschrift der Seite und beschreibt das Hauptthema. -->
-        <h1 id="intro-heading">Handmade jewelry for the Garden Collection</h1>
+        <h1 id="intro-heading" data-i18n-en="Handmade jewelry" data-i18n-de="Handgefertigter Schmuck">Handmade jewelry</h1>
         <!-- Kurzer Einführungstext, damit Besucher sofort verstehen, was angeboten wird. -->
-        <p>
-          Explore our handmade jewelry collection. The product list below is loaded dynamically from
-          the shared product data file.
+        <p data-i18n-en="Explore our handmade jewelry collection. Every piece is unique and crafted with care." data-i18n-de="Entdecken Sie unsere handgefertigte Schmuckkollektion. Jedes Stück ist einzigartig und mit Liebe gefertigt.">
+          Explore our handmade jewelry collection. Every piece is unique and crafted with care.
         </p>
       </section>
 
       <!-- Produktübersicht: diese Liste wird von JavaScript aus data.js generiert. -->
       <section aria-labelledby="products-heading">
         <!-- H2 strukturiert den Produktbereich als Unterabschnitt der Startseite. -->
-        <h2 id="products-heading">Products</h2>
+        <h2 id="products-heading" data-i18n-en="Products" data-i18n-de="Produkte">Products</h2>
         <!-- Leere Liste als Zielcontainer: JavaScript erzeugt pro Produkt einen <li>-Eintrag. -->
         <ul id="product-list">
           <!-- Fallback ohne JavaScript: einfache Hinweismeldung bleibt sichtbar, falls Skripte blockiert sind. -->
@@ -61,5 +62,7 @@
     <script src="js/data.js" defer></script>
     <!-- Startseiten-Skript erzeugt die Produktkarten dynamisch aus den Daten. -->
     <script src="js/index.js" defer></script>
+    <!-- Sprachumschalter wird nach dem Laden der Seite konfiguriert. -->
+    <script src="js/language-switcher.js" defer></script>
   </body>
 </html>

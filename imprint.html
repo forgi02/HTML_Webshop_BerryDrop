@@ -21,11 +21,13 @@
         <!-- Liste, weil die Navigation aus gleichrangigen Zielen besteht. -->
         <ul>
           <!-- Startseite im MVP ohne Sprachparameter. -->
-          <li><a href="index.html">Shop</a></li>
+          <li><a href="index.html" data-i18n-en="Shop" data-i18n-de="Shop">Shop</a></li>
           <!-- Kontaktseite bleibt erreichbar. -->
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" data-i18n-en="Contact" data-i18n-de="Kontakt">Contact</a></li>
           <!-- Diese Seite bleibt als englische Pflichtseite bestehen. -->
-          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="imprint.html" data-i18n-en="Imprint" data-i18n-de="Impressum">Imprint</a></li>
+          <!-- Sprachumschalter, der auf die jeweilige Gegensprache springt. -->
+          <li><a id="language-toggle" href="">Deutsch</a></li>
         </ul>
       </nav>
     </header>
@@ -35,12 +37,49 @@
       <!-- Ein einzelner Inhaltsabschnitt für das Imprint, klar benannt über aria-labelledby. -->
       <section aria-labelledby="imprint-heading">
         <!-- H1 als Hauptüberschrift der Seite; hier reicht ein kurzer, klarer Titel. -->
-        <h1 id="imprint-heading">Imprint</h1>
-        <!-- Platzhaltertext, weil die rechtlichen Details erst später ergänzt werden. -->
-        <p>
-          Placeholder text for the English imprint page. Final legal details will be added here later.
-        </p>
+        <h1 id="imprint-heading" data-i18n-en="Imprint" data-i18n-de="Impressum" data-title-en="Imprint | Berry-Drop-Shop" data-title-de="Impressum | Berry-Drop-Shop">Imprint</h1>
+
+        <div data-language="en">
+          <h2 class="adsimple-123223107">Legal Notice</h2>
+          <p class="adsimple-123223107">Information about the service provider.</p>
+          <p class="adsimple-123223107">Christina Zechner</p>
+          <p class="adsimple-123223107">Untergroßau 114,<br />8261 Sinabelkirchen, <br />Österreich</p>
+          <p>
+            <strong>Phone number:</strong> 068181859659<br />
+            <strong>Email:</strong> <a href="mailto:christina.zechner.jp@gmail.com">christina.zechner.jp@gmail.com</a>
+          </p>
+          <h2 class="adsimple-123223107">Picture Credits</h2>
+          <p class="adsimple-123223107">The pictures, images and graphics on this website are protected by copyright.</p>
+          <p>
+            <strong>The image rights belong to:</strong><br />Christina Zechner
+          </p>
+          <p>All texts are copyrighted.</p>
+          <p style="margin-top:15px;">Source: Created with the <a href="https://www.adsimple.at/impressum-generator/" title="Impressum Generator Austria by AdSimple">Impressum Generator</a> by AdSimple</p>
+        </div>
+
+        <div data-language="de" hidden>
+          <h2 class="adsimple-123223107">Impressum</h2>
+          <p class="adsimple-123223107">Informationen über den Diensteanbieter.</p>
+          <p class="adsimple-123223107">Christina Zechner</p>
+          <p class="adsimple-123223107">Untergroßau 114,<br />8261 Sinabelkirchen, <br />Österreich</p>
+          <p>
+            <strong>Tel.:</strong> 068181859659<br />
+            <strong>E-Mail:</strong> <a href="mailto:christina.zechner.jp@gmail.com">christina.zechner.jp@gmail.com</a>
+          </p>
+          <h2 class="adsimple-123223107">Bildernachweis</h2>
+          <p class="adsimple-123223107">Die Bilder, Fotos und Grafiken auf dieser Webseite sind urheberrechtlich geschützt.</p>
+          <p>
+            <strong>Die Bilderrechte liegen bei:</strong><br />Christina Zechner
+          </p>
+          <p>Alle Texte sind urheberrechtlich geschützt.</p>
+          <p style="margin-top:15px;">Quelle: Erstellt mit dem <a href="https://www.adsimple.at/impressum-generator/" title="Impressum Generator Österreich von AdSimple">Impressum Generator</a> von AdSimple</p>
+        </div>
+
       </section>
     </main>
+    <!-- Zentrale Konstanten und Hilfsfunktionen laden. -->
+    <script src="js/config.js" defer></script>
+    <!-- Sprachumschalter wird nach dem Laden der Seite konfiguriert. -->
+    <script src="js/language-switcher.js" defer></script>
   </body>
 </html>

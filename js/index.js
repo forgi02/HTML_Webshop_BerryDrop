@@ -26,13 +26,14 @@ function getLabel(key) {
 function createProductCardMarkup(slug, product) {
   const name = getLocalizedValue(product, "name", language);
   const altText = product.imageAlt || `${name} product image placeholder`;
+  const imageSrc = Array.isArray(product.images) && product.images.length > 0 ? product.images[0] : CARD_IMAGE_PLACEHOLDER;
 
   return `
     <li>
       <article>
         <figure>
           <!-- Platzhalterbild fuer die Karten, bis echte Produktbilder vorhanden sind. -->
-          <img src="${CARD_IMAGE_PLACEHOLDER}" alt="${escapeHtml(altText)}">
+          <img src="${escapeHtml(imageSrc)}" alt="${escapeHtml(altText)}">
           <figcaption>${escapeHtml(name)}</figcaption>
         </figure>
         <p>${getLabel("price")}: ${escapeHtml(product.price)}</p>
@@ -54,8 +55,11 @@ function renderProducts() {
     .join("");
 
   // Wenn keine Produkte vorhanden sind, bleibt eine klare Meldung sichtbar.
-  productList.innerHTML = cardsMarkup || "<li>No products found in data.js.</li>";
+  productList.innerHTML =
+    cardsMarkup || `<li>${language === "de" ? "Keine Produkte in data.js gefunden." : "No products found in data.js."}</li>`;
 }
 
 // Direkt ausfuehren, sobald die Datei geladen ist.
 renderProducts();
+
+document.title = language === "de" ? "Berry-Drop-Shop | Schmuckshop" : "Berry-Drop-Shop | Jewelry Webshop";

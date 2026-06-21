@@ -11,7 +11,7 @@
 ### 2026-05-04
 **Requirements-Dokument erstellt**
 - Erste Version von `requirements.md` mit Must-have, Nice-to-have, Offene Fragen.
-- Fokus auf konkrete, vage-freie Anforderungen; Admin ausdrücklich ausgeschlossen.
+- Fokus auf konkrete Anforderungen; Admin ausdrücklich ausgeschlossen.
 
 ### 2026-05-04
 **Requirements-Dokument überarbeitet**
@@ -44,7 +44,7 @@
 ### 2026-05-06
 **Seitenaufbau und Doku-Umstellung**
 - `index.html` als kommentiertes HTML-Gerüst aufgebaut.
-- `imprint.html` als erste Pflichtseite ergänzt.
+- `imprint.html` als erste Pflichtseite ergänzt (mit Platzhaltertext).
 - Rohdaten nach `data/data_raw.md` verschoben und `docs/data.md` auf eine Datenübersicht umgestellt.
 
 ### 2026-05-06
@@ -56,40 +56,49 @@
 
 ### 2026-05-06
 **JavaScript-Tutorial und Refactor**
-- Alle JavaScript-Dateien mit Tutorial-Kommentaren erweitert, damit die Logik in der Präsentation Zeile für Zeile erklaert werden kann.
-- `app.js` und `index.js` weiter vereinfacht: Sprachlogik, Textmapping und Karten-Rendering wurden kompakter aufgebaut.
-- `constants.js` als gemeinsame Sammelstelle fuer Standardwerte beibehalten und dokumentiert.
-- `data.js` um klare Kommentarstruktur fuer den bilingualen Produktdatensatz ergaenzt.
+- Alle JavaScript-Dateien mit Tutorial-Kommentaren erweitert, damit die Logik in der Präsentation Zeile für Zeile erklärt werden kann.
+- `app.js` und `index.js` weiter vereinfacht: Sprachlogik, Textmapping und Karten-Rendering wurden kompakter aufgebaut (2x).
+- `constants.js` als gemeinsame Sammelstelle für Standardwerte beibehalten und dokumentiert (KI hat mich davon überzeugt, dass das sinnvoll ist).
+- `data.js` um klare Kommentarstruktur für den bilingualen Produktdatensatz ergänzt.
 
 ### 2026-05-06
 **Weitere JavaScript-Vereinfachungen und Validierung**
-- `app.js` auf einen einheitlichen Content-Helper umgestellt (`setContent` fuer Text und Listen).
-- Fallback-Rendering fuer ungültige Produkt-Slugs auf denselben Helper umgestellt.
-- Produktseiten getestet: gueltiger Slug und ungültiger Slug liefern die erwarteten Inhalte.
-- Commit und Push ausgefuehrt: `Vereinfacherungen des JavaScripts`.
+- `app.js` auf einen einheitlichen Content-Helper umgestellt (`setContent` für Texte und Listen).
+- Commit und Push ausgeführt: `Vereinfacherungen des JavaScripts`.
 
 ### 2026-05-06
 **Gemeinsame Helper ausgelagert**
 - Duplizierte Funktionen aus `app.js` und `index.js` in `shared-utils.js` verschoben (`resolveLanguage`, `getLocalizedValue`, `escapeHtml`).
 - `index.html` und `product.html` um die Einbindung von `shared-utils.js` erweitert.
-- Smoke-Tests durchgefuehrt fuer `index.html`, `index.html?lang=de` und `product.html?product=raspberry-swirl-earrings&lang=de`.
-- Commits und Pushes ausgefuehrt: `Weitere Vereinfacherungen in index.js` sowie `Gemeinsame JS-Helper fuer app und index ausgelagert`.
+- Commits und Pushes ausgeführt: `Weitere Vereinfacherungen in index.js` sowie `Gemeinsame JS-Helper fuer app und index ausgelagert`.
 
 ### 2026-05-07
 **Konfigurationen vereinigt**
 - `config.js` erstellt und kombiniert `constants.js` (Konstanten) + `shared-utils.js` (Hilfsfunktionen).
-- `constants.js` und `shared-utils.js` geloescht; `index.html` und `product.html` angepasst.
-- Jetzt nur noch 4 JS-Dateien noetig: `config.js`, `data.js`, `app.js`, `index.js`.
-- Tests durchgefuehrt: `index.html` (EN) und `product.html?product=bijou-berry-bracelet&lang=de` funktionieren.
+- `constants.js` und `shared-utils.js` gelöscht; `index.html` und `product.html` angepasst.
+- Jetzt nur noch 4 JS-Dateien nötig: `config.js`, `data.js`, `app.js`, `index.js` (Vereinfachungen sind doch möglich - hartnäckig bleiben).
 - Commit und Push: `Vereinigte Konfiguration: config.js ersetzt constants.js und shared-utils.js`.
 
 ### 2026-05-07
 **JS-Dateien in js/ Ordner organisiert**
-- Alle 4 JS-Dateien in einen neuen `js/` Ordner verschoben: `config.js`, `data.js`, `app.js`, `index.js`.
-- `index.html` und `product.html` um neue Script-Pfade (`js/config.js`, `js/data.js`, etc.) angepasst.
-- Alte JS-Dateien im Root-Verzeichnis geloescht.
-- Tests durchgefuehrt: `index.html` und `product.html?product=raspberry-pearlette-necklace&lang=de` funktionieren.
+- Alle 4 JS-Dateien in einen neuen `js/` Ordner verschoben: `config.js`, `data.js`, `app.js`, `index.js` und Pfade angepasst.
 - Projektstruktur ist jetzt sauberer: HTML/CSS im Root, JS im js/-Ordner.
+
+### 2026-06-21
+**Bilder & Pfade ergänzt**
+- Bilder + Pfade manuell eingefügt, um die neuen Credits nicht zu verbrauchen (Journal wird künftig auch komplett ohne KI geschrieben).
+- Pfade von Agent repariert und ergänzt (`app.js`, `index.js`).
+- `contact.html` liest jetzt den SLUG aus und fügt den entsprechenden Produkttext im Subject ein wenn man von `product.html` kommt .
+
+### 2026-06-21
+**Imprint update**
+- Impressium mit adsimple.at erstellt.
+
+### 2026-06-21
+**Vollständige Sprachumschaltung**
+- Navigation, Seitentitel und sichtbare Texte auf Index-, Kontakt-, Produkt- und Impressumsseite sind jetzt auf Deutsch und Englisch umschaltbar.
+- Der Header-Branding-Text „Berry-Drop-Shop“ bleibt bewusst unverändert.
+- Das Impressum nutzt nun den deutschsprachigen Inhalt aus der vorher versteckten Version.
 
 ---
 
@@ -98,7 +107,6 @@
 - Preisformat finalisieren (`69,00 EUR` vs. `€ 69,00`)?
 - Produktdaten: zunächst in `app.js`, später bei Bedarf in eine separate Datenquelle auslagern.
 - Formspree-Test: Funktioniert von `file://` oder braucht HTTP-Server?
-- Produktbilder noch ergänzen.
 
 ## Verworfene Ansätze
 

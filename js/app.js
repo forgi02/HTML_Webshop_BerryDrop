@@ -13,6 +13,22 @@ function setContent(id, value) {
   }
 }
 
+function renderProductGallery(product) {
+  const gallery = document.getElementById("product-gallery");
+  if (!gallery) return;
+
+  const images = Array.isArray(product.images) ? product.images : [];
+  if (images.length === 0) {
+    gallery.innerHTML = "";
+    return;
+  }
+
+  const altText = product.imageAlt || "Product gallery image";
+  gallery.innerHTML = images
+    .map((src, index) => `<img src="${escapeHtml(src)}" alt="${escapeHtml(`${altText} ${index + 1}`)}">`)
+    .join("");
+}
+
 // Query-Parameter aus der aktuellen URL lesen.
 // Beispiel: product.html?product=raspberry-swirl-earrings&lang=de
 const params = new URLSearchParams(window.location.search);
@@ -28,9 +44,9 @@ const product = products[productSlug];
 // Fallback-Ansicht, wenn der product-Slug nicht existiert.
 // Damit bleibt die Seite auch bei Tippfehlern im Link nutzbar und erklaerbar.
 function renderProductNotFound(slug) {
-  document.title = "Product not found | Jewelry Webshop";
-    setContent("product-heading", "Product not found");
-    setContent("product-name", "No matching product in data.js");
+  document.title = language === "de" ? "Produkt nicht gefunden | Berry-Drop-Shop" : "Product not found | Berry-Drop-Shop";
+    setContent("product-heading", language === "de" ? "Produkt nicht gefunden" : "Product not found");
+    setContent("product-name", language === "de" ? "Kein passendes Produkt in data.js" : "No matching product in data.js");
     setContent("product-price", "-");
     setContent("product-category", "-");
     setContent("product-made-in", "-");
@@ -38,11 +54,13 @@ function renderProductNotFound(slug) {
     setContent("product-availability", "-");
     setContent(
       "product-description",
-      `No product data found for slug: ${slug || "(missing)"}. Check the URL parameter or add the product in data.js.`
+      language === "de"
+        ? `Keine Produktdaten für den Slug ${slug || "(fehlend)"} gefunden. Bitte URL-Parameter prüfen oder Produkt in data.js ergänzen.`
+        : `No product data found for slug: ${slug || "(missing)"}. Check the URL parameter or add the product in data.js.`
     );
-    setContent("product-materials", ["No data"]);
-    setContent("product-measurements", ["No data"]);
-    setContent("product-notes", ["No data"]);
+    setContent("product-materials", [language === "de" ? "Keine Daten" : "No data"]);
+    setContent("product-measurements", [language === "de" ? "Keine Daten" : "No data"]);
+    setContent("product-notes", [language === "de" ? "Keine Daten" : "No data"]);
 
   const contactLink = document.getElementById("product-contact-link");
   if (contactLink) contactLink.href = "contact.html";
@@ -72,7 +90,14 @@ if (!product) {
 
   // Das Produktbild bekommt den passenden Alt-Text, damit die Seite barrierefrei bleibt.
   const image = document.getElementById("product-image");
-  if (image) image.alt = product.imageAlt;
+  if (image) {
+    image.alt = product.imageAlt;
+    if (Array.isArray(product.images) && product.images.length > 0) {
+      image.src = product.images[0];
+    }
+  }
+
+  renderProductGallery(product);
 
   // Der Kontaktlink uebergibt den Produkt-Slug und die Sprache, damit das Formular Kontext hat.
   const contactLink = document.getElementById("product-contact-link");
@@ -81,5 +106,5 @@ if (!product) {
   }
 
   // Der Browser-Tab zeigt den aktuellen Produktnamen.
-  document.title = `${getLocalizedValue(product, "name", language)} | Jewelry Webshop`;
+  document.title = `${getLocalizedValue(product, "name", language)} | ${language === "de" ? "Schmuckshop" : "Jewelry Webshop"}`;
 }

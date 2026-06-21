@@ -11,6 +11,8 @@ const products = {
     nameDE: "Raspberry Pearlette Halskette",
     // Alt-Text fuer das Bild, falls spaeter ein echtes Produktbild eingebunden wird.
     imageAlt: "Raspberry Pearlette Necklace product image",
+    // Alle verfügbaren Produktbilder (2-3 pro Produkt) im data/-Ordner.
+    images: ["data/Raspberry_Necklace_1.jpeg", "data/Raspberry_Necklace_2.jpeg", "data/Raspberry_Necklace_3.jpeg"],
     // Preis bleibt nur einmal gespeichert, weil er sprachunabhaengig ist.
     price: "€49,95",
     // Kategorie in beiden Sprachen.
@@ -55,6 +57,7 @@ const products = {
     name: "Raspberry Swirl Earrings",
     nameDE: "Raspberry Swirl Ohrringe",
     imageAlt: "Raspberry Swirl Earrings product image",
+    images: ["data/Raspberry_Earrings_1.jpeg", "data/Raspberry_Earrings_2.jpeg"],
     price: "€39,95",
     category: "Earrings",
     categoryDE: "Ohrringe",
@@ -80,6 +83,7 @@ const products = {
     name: "Bijou Berry Bracelet",
     nameDE: "Bijou Berry Armband",
     imageAlt: "Bijou Berry Bracelet product image",
+    images: ["data/Bijou_Bracelet_1.jpeg", "data/Bijou_Bracelet_2.jpeg", "data/Bijou_Bracelet_3.jpeg"],
     price: "€42,95",
     category: "Bracelet",
     categoryDE: "Armband",

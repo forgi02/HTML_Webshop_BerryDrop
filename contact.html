@@ -21,11 +21,13 @@
         <!-- Navigation als Liste, weil sie aus gleichrangigen Zielen besteht. -->
         <ul>
           <!-- Startseite im vorläufigen MVP ohne Sprachparameter. -->
-          <li><a href="index.html">Shop</a></li>
+          <li><a href="index.html" data-i18n-en="Shop" data-i18n-de="Shop">Shop</a></li>
           <!-- Kontaktseite bleibt Teil der Hauptnavigation. -->
-          <li><a href="contact.html">Contact</a></li>
+          <li><a href="contact.html" data-i18n-en="Contact" data-i18n-de="Kontakt">Contact</a></li>
           <!-- Englisches Impressum. -->
-          <li><a href="imprint.html">Imprint</a></li>
+          <li><a href="imprint.html" data-i18n-en="Imprint" data-i18n-de="Impressum">Imprint</a></li>
+          <!-- Sprachumschalter, der auf die jeweilige Gegensprache springt. -->
+          <li><a id="language-toggle" href="">Deutsch</a></li>
         </ul>
       </nav>
     </header>
@@ -35,9 +37,9 @@
       <!-- Abschnitt für das Kontaktformular; aria-labelledby verknüpft ihn mit der Überschrift. -->
       <section aria-labelledby="contact-heading">
         <!-- H1 als Hauptüberschrift der Seite: klar und direkt. -->
-        <h1 id="contact-heading">Contact</h1>
+        <h1 id="contact-heading" data-i18n-en="Contact" data-i18n-de="Kontakt">Contact</h1>
         <!-- Kurzer Hinweis, wann das Formular verwendet werden soll. -->
-        <p>Please use this form if you have questions about a product or the shop.</p>
+        <p data-i18n-en="Please use this form if you have questions about a product or the shop." data-i18n-de="Bitte verwenden Sie dieses Formular, wenn Sie Fragen zu einem Produkt oder zum Shop haben.">Please use this form if you have questions about a product or the shop.</p>
 
         <!-- Das Formular sendet an Formspree per POST, damit die Anfrage extern verarbeitet wird. -->
         <form action="https://formspree.io/f/mvzvjwyg" method="post">
@@ -46,34 +48,43 @@
 
           <!-- Name-Feld: Pflichtangabe, damit die Anfrage zugeordnet werden kann. -->
           <p>
-            <label for="name">Name</label><br>
+            <label for="name" data-i18n-en="Name" data-i18n-de="Name">Name</label><br>
             <input type="text" id="name" name="name" required>
           </p>
 
           <!-- E-Mail-Feld: Pflichtangabe für die Antwort auf die Anfrage. -->
           <p>
-            <label for="email">Email</label><br>
+            <label for="email" data-i18n-en="Email" data-i18n-de="E-Mail">Email</label><br>
             <input type="email" id="email" name="email" required>
           </p>
 
           <!-- Betreff-Feld: gibt der Anfrage eine kurze inhaltliche Einordnung. -->
           <p>
-            <label for="subject">Subject</label><br>
+            <label for="subject" data-i18n-en="Subject" data-i18n-de="Betreff">Subject</label><br>
             <input type="text" id="subject" name="subject" required>
           </p>
 
           <!-- Nachrichtenfeld: hier steht der eigentliche Text der Anfrage. -->
           <p>
-            <label for="message">Message</label><br>
+            <label for="message" data-i18n-en="Message" data-i18n-de="Nachricht">Message</label><br>
             <textarea id="message" name="message" rows="8" required></textarea>
           </p>
 
           <!-- Absenden-Button; ohne ihn könnte das Formular nicht ausgelöst werden. -->
           <p>
-            <button type="submit">Send message</button>
+            <button type="submit" data-i18n-en="Send message" data-i18n-de="Nachricht senden">Send message</button>
           </p>
         </form>
       </section>
     </main>
+
+    <!-- Zentrale Konstanten und Hilfsfunktionen laden. -->
+    <script src="js/config.js" defer></script>
+    <!-- Produktdaten laden, damit bei vorhandenem Slug auch der Produktname genutzt werden kann. -->
+    <script src="js/data.js" defer></script>
+    <!-- Formularvorbelegung aus URL-Parametern, z.B. product_slug und lang. -->
+    <script src="js/contact.js" defer></script>
+    <!-- Sprachumschalter wird nach dem Laden der Seite konfiguriert. -->
+    <script src="js/language-switcher.js" defer></script>
   </body>
 </html>
