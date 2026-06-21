@@ -61,5 +61,3 @@ function renderProducts() {
 
 // Direkt ausfuehren, sobald die Datei geladen ist.
 renderProducts();
-
-document.title = language === "de" ? "Berry-Drop-Shop | Schmuckshop" : "Berry-Drop-Shop | Jewelry Webshop";

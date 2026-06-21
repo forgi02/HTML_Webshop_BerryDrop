@@ -84,7 +84,7 @@
 - Alle 4 JS-Dateien in einen neuen `js/` Ordner verschoben: `config.js`, `data.js`, `app.js`, `index.js` und Pfade angepasst.
 - Projektstruktur ist jetzt sauberer: HTML/CSS im Root, JS im js/-Ordner.
 
-### 2026-06-21
+### 2026-06-20
 **Bilder & Pfade ergänzt**
 - Bilder + Pfade manuell eingefügt, um die neuen Credits nicht zu verbrauchen (Journal wird künftig auch komplett ohne KI geschrieben).
 - Pfade von Agent repariert und ergänzt (`app.js`, `index.js`).
@@ -97,18 +97,4 @@
 ### 2026-06-21
 **Vollständige Sprachumschaltung**
 - Navigation, Seitentitel und sichtbare Texte auf Index-, Kontakt-, Produkt- und Impressumsseite sind jetzt auf Deutsch und Englisch umschaltbar.
-- Der Header-Branding-Text „Berry-Drop-Shop“ bleibt bewusst unverändert.
-- Das Impressum nutzt nun den deutschsprachigen Inhalt aus der vorher versteckten Version.
-
----
-
-## Offene Punkte (für nächste Phase)
-
-- Preisformat finalisieren (`69,00 EUR` vs. `€ 69,00`)?
-- Produktdaten: zunächst in `app.js`, später bei Bedarf in eine separate Datenquelle auslagern.
-- Formspree-Test: Funktioniert von `file://` oder braucht HTTP-Server?
-
-## Verworfene Ansätze
-
-- Initiale Überlegung: Admin-Bereich mitabbilden → verworfen, da Scope nur Kundenseite.
-- Video-Unterstützung als Must-have → reduziert auf Nice-to-have (keine Videos im MVP nötig).
+- Code weiter vereinfacht, gepusht und commited.

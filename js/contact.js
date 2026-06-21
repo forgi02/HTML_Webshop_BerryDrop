@@ -9,8 +9,6 @@ const language = resolveLanguage(requestedLang);
 const hiddenSlugInput = document.querySelector('input[name="product_slug"]');
 const subjectInput = document.getElementById("subject");
 
-document.title = language === "de" ? "Kontakt | Jewelry Webshop" : "Contact | Jewelry Webshop";
-
 if (productSlug) {
   // Den Slug immer als verstecktes Feld mitschicken, damit die Anfrage klar zuordenbar ist.
   if (hiddenSlugInput) {

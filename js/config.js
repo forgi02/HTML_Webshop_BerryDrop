@@ -37,3 +37,66 @@ function escapeHtml(value) {
     .replace(/\"/g, "&quot;")
     .replace(/'/g, "&#39;");
 }
+
+function applyLanguageUI() {
+  const requestedLang = new URLSearchParams(window.location.search).get("lang");
+  const pageLanguage = resolveLanguage(requestedLang);
+  const nextLanguage = pageLanguage === "de" ? "en" : "de";
+
+  document.documentElement.lang = pageLanguage;
+
+  const languageToggleLink = document.getElementById("language-toggle");
+  if (languageToggleLink) {
+    languageToggleLink.textContent = pageLanguage === "de" ? "English" : "Deutsch";
+
+    const toggleUrl = new URL(window.location.href);
+    toggleUrl.searchParams.set("lang", nextLanguage);
+    languageToggleLink.href = toggleUrl.toString();
+  }
+
+  const internalNavLinks = document.querySelectorAll('nav a[href]:not(#language-toggle)');
+  internalNavLinks.forEach((link) => {
+    const hrefValue = link.getAttribute("href");
+    if (!hrefValue || hrefValue.startsWith("mailto:") || hrefValue.startsWith("http") || hrefValue.startsWith("javascript:")) {
+      return;
+    }
+
+    const linkUrl = new URL(hrefValue, window.location.href);
+    linkUrl.searchParams.set("lang", pageLanguage);
+    link.setAttribute("href", linkUrl.toString());
+  });
+
+  const translatedElements = document.querySelectorAll("[data-i18n-en], [data-i18n-de]");
+  translatedElements.forEach((element) => {
+    const translatedText = pageLanguage === "de" ? element.dataset.i18nDe : element.dataset.i18nEn;
+    if (typeof translatedText !== "string") return;
+
+    if (element instanceof HTMLInputElement || element instanceof HTMLTextAreaElement) {
+      if (!element.value) element.value = translatedText;
+      return;
+    }
+
+    element.textContent = translatedText;
+  });
+
+  const languageBlocks = document.querySelectorAll("[data-language]");
+  if (languageBlocks.length > 0) {
+    languageBlocks.forEach((block) => {
+      block.hidden = block.getAttribute("data-language") !== pageLanguage;
+    });
+  }
+
+  const localizedTitles = document.querySelectorAll("[data-title-en], [data-title-de]");
+  localizedTitles.forEach((element) => {
+    const translatedTitle = pageLanguage === "de" ? element.dataset.titleDe : element.dataset.titleEn;
+    if (typeof translatedTitle === "string" && translatedTitle) {
+      document.title = translatedTitle;
+    }
+  });
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", applyLanguageUI);
+} else {
+  applyLanguageUI();
+}
